@@ -96,23 +96,36 @@ def update_figure2(start_date, end_date):
                                             'x1': end_date,
                                             'y1': 1500,
                                             'line': {
-                                                'color': 'red',
+                                                'color': 'orange',
                                                 'width': 4,
                                                 'dash': 'dash',
                                             }
                                         },
-                                                                                 {
+                    
+                                        {
                                             'type': 'line',
                                             'x0': start_date,
                                             'y0': 90,
                                             'x1': end_date,
                                             'y1': 90,
                                             'line': {
-                                                'color': 'orange',
+                                                'color': 'lightgreen',
                                                 'width': 4,
                                                 'dash': 'dot',
                                             }
-                                        },   
+                                        },
+#                                        {
+#                                            'type': 'line',
+#                                            'x0': start_date,
+#                                            'y0': 15,
+#                                            'x1': end_date,
+#                                            'y1': 15,
+#                                            'line': {
+#                                                'color': 'lightgreen',
+#                                                'width': 4,
+#                                                'dash': 'dot',
+#                                            }
+#                                        },
                                     ]
         )}  
                                                                                                

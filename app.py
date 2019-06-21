@@ -69,12 +69,12 @@ def update_figure2(start_date, end_date):
                            marker={'color': colors[label]}))
     return {
         'data': bars,
-        'layout': go.Layout(title=f'State vs Export:',
+        'layout': go.Layout(title=f'Daiily Predicted Pollen Count',
                            # colorway=["#EF963B", "#EF533B"],
                                       hovermode="closest",
-                            xaxis={'title': "State", 'titlefont': {'color': 'black', 'size': 14},
+                            xaxis={'title': "Date", 'titlefont': {'color': 'black', 'size': 14},
                                    'tickfont': {'size': 9, 'color': 'black'}},
-                            yaxis={'title': "Export price (million USD)", 'titlefont': {'color': 'black', 'size': 14, },
+                            yaxis={'title': "Daily Pollen Count", 'titlefont': {'color': 'black', 'size': 14, },
                                    'tickfont': {'color': 'black'},'type':'log'},
                             shapes= [
 #                                        # Line Vertical
@@ -111,7 +111,7 @@ def update_figure2(start_date, end_date):
                                             'line': {
                                                 'color': 'lightgreen',
                                                 'width': 4,
-                                                'dash': 'dot',
+                                                'dash': 'dash',
                                             }
                                         },
 #                                        {

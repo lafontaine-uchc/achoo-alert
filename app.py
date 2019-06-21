@@ -32,20 +32,20 @@ app.layout = html.Div(children=[
         end_date=dt(2019, 2, 7)
     ),
     html.Div(id='output-container-date-picker-range'),
-    html.Div([dcc.Graph(id="my-graph")]),
+#    html.Div([dcc.Graph(id="my-graph")]),
     html.Div([dcc.Graph(id="my-graph2")])
 ])
 
-@app.callback(
-    Output('my-graph','figure'),
-    [Input('my-date-picker-range', 'start_date'), Input('my-date-picker-range', 'end_date')])
-def update_figure(start_date, end_date):
-    gdata = forecast[(forecast["DATE"] >= start_date) & (forecast["DATE"] <= end_date)]
-#    dff = df[(df["year"] >= year[0]) & (df["year"] <= year[1])]
-    trace = []
-    trace.append(go.Scatter(x=gdata["DATE"], y=gdata["Pollen_Count"], name="Prediction", mode='lines',
-                                marker={'size': 8, "opacity": 0.6, "line": {'width': 0.5}}, ))
-    return {"data": trace,"layout": go.Layout(title="Daily Predicted Pollen Counts", colorway=['#fdae61', '#abd9e9', '#2c7bb6'], yaxis={"title": "Pollen Count"}, xaxis={"title": "Date"})}
+#@app.callback(
+#    Output('my-graph','figure'),
+#    [Input('my-date-picker-range', 'start_date'), Input('my-date-picker-range', 'end_date')])
+#def update_figure(start_date, end_date):
+#    gdata = forecast[(forecast["DATE"] >= start_date) & (forecast["DATE"] <= end_date)]
+##    dff = df[(df["year"] >= year[0]) & (df["year"] <= year[1])]
+#    trace = []
+#    trace.append(go.Scatter(x=gdata["DATE"], y=gdata["Pollen_Count"], name="Prediction", mode='lines',
+#                                marker={'size': 8, "opacity": 0.6, "line": {'width': 0.5}}, ))
+#    return {"data": trace,"layout": go.Layout(title="Daily Predicted Pollen Counts", colorway=['#fdae61', '#abd9e9', '#2c7bb6'], yaxis={"title": "Pollen Count"}, xaxis={"title": "Date"})}
  
 @app.callback(
     dash.dependencies.Output('my-graph2', 'figure'),

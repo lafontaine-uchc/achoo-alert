@@ -11,9 +11,9 @@ import flask
 server = flask.Flask(__name__)
 #app = dash.Dash(__name__, server=server)
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-wd= pd.read_csv("./weatherTest.csv")
+#wd= pd.read_csv("./weatherTest.csv")
 forecast = pd.read_csv("./app_data.csv")
-wd["Pollen Count"] = wd.GDDSUM*6.69977761+wd.Doy*(-0.76507818)+39.26186356797564
+#wd["Pollen Count"] = wd.GDDSUM*6.69977761+wd.Doy*(-0.76507818)+39.26186356797564
 
 app = dash.Dash(__name__, server=server, external_stylesheets=external_stylesheets)
 

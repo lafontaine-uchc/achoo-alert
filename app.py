@@ -52,18 +52,69 @@ def update_figure(start_date, end_date):
     [dash.dependencies.Input('my-date-picker-range', 'start_date'),
      dash.dependencies.Input('my-date-picker-range', 'end_date')])
 def update_figure2(start_date, end_date):
+    colors = {"Absent": 'blue',
+              "Low":'darkgreen',
+          "Moderate": 'lightgreen',
+          "High": 'orange',
+          "Very High": 'red'
+          }
+    
     dff = forecast[(forecast["DATE"] >= start_date) & (forecast["DATE"] <= end_date)]
-    trace1 = go.Bar(x=dff['DATE'], y=dff["Pollen_Count"], name="Prediction", )
-    #trace2 = go.Bar(x=dff['state'], y=dff[selected_product2], name=selected_product2.title(), )
-
+    #trace1 = go.Bar(x=dff['DATE'], y=dff["Pollen_Count"], name="Prediction", marker={'color': colors[dff['pc_binned']]})
+    bars = []
+    for label, label_df in dff.groupby('pc_binned'):
+        bars.append(go.Bar(x=label_df.DATE,
+                           y=label_df.Pollen_Count,
+                           name=label,
+                           marker={'color': colors[label]}))
     return {
-        'data': [trace1],
+        'data': bars,
         'layout': go.Layout(title=f'State vs Export:',
-                            colorway=["#EF963B", "#EF533B"], hovermode="closest",
+                           # colorway=["#EF963B", "#EF533B"],
+                                      hovermode="closest",
                             xaxis={'title': "State", 'titlefont': {'color': 'black', 'size': 14},
                                    'tickfont': {'size': 9, 'color': 'black'}},
                             yaxis={'title': "Export price (million USD)", 'titlefont': {'color': 'black', 'size': 14, },
-                                   'tickfont': {'color': 'black'}})}  
+                                   'tickfont': {'color': 'black'},'type':'log'},
+                            shapes= [
+#                                        # Line Vertical
+#                                        {
+#                                            'type': 'line',
+#                                            'x0': 1,
+#                                            'y0': 0,
+#                                            'x1': 1,
+#                                            'y1': 2,
+#                                            'line': {
+#                                                'color': 'rgb(55, 128, 191)',
+#                                                'width': 3,}
+#                                        },
+                                                    # Line Horizontal
+                                        {
+                                            'type': 'line',
+                                            'x0': start_date,
+                                            'y0': 1500,
+                                            'x1': end_date,
+                                            'y1': 1500,
+                                            'line': {
+                                                'color': 'red',
+                                                'width': 4,
+                                                'dash': 'dash',
+                                            }
+                                        },
+                                                                                 {
+                                            'type': 'line',
+                                            'x0': start_date,
+                                            'y0': 90,
+                                            'x1': end_date,
+                                            'y1': 90,
+                                            'line': {
+                                                'color': 'orange',
+                                                'width': 4,
+                                                'dash': 'dot',
+                                            }
+                                        },   
+                                    ]
+        )}  
                                                                                                
 if __name__ == '__main__':
     app.run_server(debug=True)

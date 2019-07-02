@@ -18,10 +18,10 @@ forecast = pd.read_csv("./app_data.csv")
 app = dash.Dash(__name__, server=server, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div(children=[
-    html.H1(children='Pollen Predictor'),
+    html.H1(children='Achoo Alert'),
 
     html.Div(children='''
-        A web application for predicting pollen counts.
+        Seasonal Allergy Planner
     '''),
 
     dcc.DatePickerRange(
@@ -69,7 +69,7 @@ def update_figure2(start_date, end_date):
                            marker={'color': colors[label]}))
     return {
         'data': bars,
-        'layout': go.Layout(title=f'Daiily Predicted Pollen Count',
+        'layout': go.Layout(title=f'Daily Predicted Pollen Count',
                            # colorway=["#EF963B", "#EF533B"],
                                       hovermode="closest",
                             xaxis={'title': "Date", 'titlefont': {'color': 'black', 'size': 14},

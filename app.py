@@ -69,13 +69,15 @@ def update_figure2(start_date, end_date):
                            marker={'color': colors[label]}))
     return {
         'data': bars,
-        'layout': go.Layout(title=f'Daily Predicted Pollen Count',
+        'layout': go.Layout(#title=f'Daily Predicted Pollen Count',
+                            title={'text': "Daily Pollen Count",
+                                   'font': {'color': 'black', 'size': 28, }},
                            # colorway=["#EF963B", "#EF533B"],
                                       hovermode="closest",
-                            xaxis={'title': "Date", 'titlefont': {'color': 'black', 'size': 14},
-                                   'tickfont': {'size': 9, 'color': 'black'}},
-                            yaxis={'title': "Daily Pollen Count", 'titlefont': {'color': 'black', 'size': 14, },
-                                   'tickfont': {'color': 'black'},'type':'log'},
+                            xaxis={'title': "Date", 'titlefont': {'color': 'black', 'size': 18},
+                                   'tickfont': {'size': 14, 'color': 'black'}},
+                            yaxis={'title': "Daily Pollen Count", 'titlefont': {'color': 'black', 'size': 18, },
+                                   'tickfont': {'size': 14,'color': 'black'},'type':'log'},
                             shapes= [
 #                                        # Line Vertical
 #                                        {

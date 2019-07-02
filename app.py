@@ -20,7 +20,7 @@ app = dash.Dash(__name__, server=server, external_stylesheets=external_styleshee
 app.layout = html.Div(children=[
     html.H1(children='Achoo Alert'),
 
-    html.Div(children='''
+    html.H6(children='''
         Seasonal Allergy Planner
     '''),
 
